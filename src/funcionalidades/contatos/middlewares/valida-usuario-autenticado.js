@@ -21,10 +21,13 @@ export function validaUsuarioAutenticado(request, response, next) {
         });
     };
 
+    try {
+        const { idUsuario } = decifrar(token);
 
-    const { idUsuario } = decifrar(token);
+        request.usuarioLogado = idUsuario;
 
-    if (!idUsuario) {
+        return next();
+    } catch {
         return response.status(401).json({
             sucesso: false,
             dados: null,
@@ -32,7 +35,4 @@ export function validaUsuarioAutenticado(request, response, next) {
         });
     }
 
-    request.usuarioLogado = idUsuario;
-
-    return next();
 }
