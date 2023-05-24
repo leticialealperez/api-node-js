@@ -1,4 +1,5 @@
 import { usuarios } from '../../../database/index.js';
+import { comparar } from '../../../utilitarios/index.js';
 
 export const validarDadosLogin = async (request, response, next) => {
     const { email, senha } = request.body;
