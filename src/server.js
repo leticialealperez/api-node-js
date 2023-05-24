@@ -1,7 +1,7 @@
 import cors from 'cors';
 import 'dotenv/config';
 import express from 'express';
-import { rotasApi } from './configuracoes/rotas';
+import rotasApi from './config/rotas.js';
 
 const app = express();
 app.use(cors());

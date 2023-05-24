@@ -1,4 +1,6 @@
-export const validarDados = async (request, response, next) => {
+import { usuarios } from '../../../database/index.js';
+
+export const validarDadosLogin = async (request, response, next) => {
     const { email, senha } = request.body;
 
     const usuarioEncontrado = usuarios.find((usuario) => usuario.email === email);

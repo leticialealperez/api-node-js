@@ -1,11 +1,11 @@
 import { v4 as gerarId } from 'uuid';
-import { usuarios } from '../../database';
-import { encriptar, gerarHash } from '../../utilitarios';
-import { validarDados, validarEmailExistente } from './middlewares';
+import { usuarios } from '../../database/index.js';
+import { encriptar, gerarHash } from '../../utilitarios/index.js';
+import { validarDadosCadastro, validarDadosLogin, validarEmailExistente } from './middlewares/index.js';
 
 const rotasUsuarios = (rotiador) => {
     // CADASTRO
-    rotiador.post('/usuarios/cadastro', validarDados, validarEmailExistente, async (request, response) => {
+    rotiador.post('/usuarios/cadastro', validarDadosCadastro, validarEmailExistente, async (request, response) => {
         const { email, senha } = request.body;
 
         const hashSenha = await gerarHash(senha);
@@ -28,7 +28,7 @@ const rotasUsuarios = (rotiador) => {
     });
 
     // LOGIN
-    rotiador.post('/usuarios/login', validarDados, (request, response) => {
+    rotiador.post('/usuarios/login', validarDadosLogin, (request, response) => {
         const { email, senha } = request.body;
 
         const usuarioEncontrado = usuarios.find((usuario) => usuario.email === email);

@@ -1,2 +1,3 @@
-export * from './config-bcrypt';
-export * from './config-jwt-token';
+export * from './config-bcrypt.js';
+export * from './config-jwt-token.js';
+

@@ -1,8 +1,6 @@
 import { v4 as gerarId } from 'uuid';
-import { contatos } from "../../database/contatos";
-import { validaUsuarioAutenticado } from "./middlewares";
-import { validaEnvioDadosObrigatorios } from './middlewares/valida-envio-dados-obrigatorios';
-import { validaID } from './middlewares/valida-id';
+import { contatos } from "../../database/index.js";
+import { validaEnvioDadosObrigatorios, validaID, validaUsuarioAutenticado } from "./middlewares/index.js";
 
 const rotasContatos = (rotiador) => {
     // CADASTRO

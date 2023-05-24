@@ -1,4 +1,4 @@
-import { decifrar } from "../../../utilitarios";
+import { decifrar } from "../../../utilitarios/index.js";
 
 export function validaUsuarioAutenticado(request, response, next) {
     const authorization = request.headers['authorization'];

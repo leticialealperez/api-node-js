@@ -1,4 +1,4 @@
-import { usuarios } from '../../../database/usuarios';
+import { usuarios } from '../../../database/index.js';
 
 export const validarEmailExistente = (request, response, next) => {
     const { email } = request.body;
