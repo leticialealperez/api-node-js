@@ -6,7 +6,11 @@ export const validarEmailExistente = (request, response, next) => {
     const existe = usuarios.some((usuario) => usuario.email === email);
 
     if (existe) {
-        return response.status(400).json({ message: 'Este e-mail já está cadastrado.' });
+        return response.status(400).json({
+            sucesso: false,
+            dados: null,
+            mensagem: 'Este e-mail já está sendo usado por outro usuário.',
+        });
     }
 
     return next();
