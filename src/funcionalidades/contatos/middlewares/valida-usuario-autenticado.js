@@ -1,3 +1,4 @@
+import { usuarios } from "../../../database/usuarios.js";
 import { decifrar } from "../../../utilitarios/index.js";
 
 export function validaUsuarioAutenticado(request, response, next) {
@@ -24,7 +25,9 @@ export function validaUsuarioAutenticado(request, response, next) {
     try {
         const { idUsuario } = decifrar(token);
 
-        request.usuarioLogado = idUsuario;
+        const usuario = usuarios.find((usuario) => usuario.id === idUsuario)
+
+        request.usuarioLogado = usuario.email;
 
         return next();
     } catch {
