@@ -1,7 +1,10 @@
 import { v4 as gerarId } from 'uuid';
-import { usuarios } from '../../database/index.js';
-import { encriptar, gerarHash } from '../../utilitarios/index.js';
-import { validarDadosCadastro, validarDadosLogin, validarEmailExistente } from './middlewares/index.js';
+import { usuarios } from '../../database/usuarios.js';
+import { gerarHash } from '../../utilitarios/config-bcrypt.js';
+import { encriptar } from '../../utilitarios/config-jwt-token.js';
+import { validarDadosLogin } from './middlewares/autenticacao-usuario.js';
+import { validarDadosCadastro } from './middlewares/valida-dados-cadastro.js';
+import { validarEmailExistente } from './middlewares/validar-email-existente.js';
 
 const rotasUsuarios = (rotiador) => {
     // CADASTRO

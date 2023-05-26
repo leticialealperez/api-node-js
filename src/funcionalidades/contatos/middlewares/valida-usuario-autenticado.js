@@ -1,5 +1,5 @@
 import { usuarios } from "../../../database/usuarios.js";
-import { decifrar } from "../../../utilitarios/index.js";
+import { decifrar } from "../../../utilitarios/config-jwt-token.js";
 
 export function validaUsuarioAutenticado(request, response, next) {
     const authorization = request.headers['authorization'];

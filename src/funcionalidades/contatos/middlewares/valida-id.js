@@ -1,4 +1,4 @@
-import { contatos } from "../../../database/index.js";
+import { contatos } from "../../../database/contatos.js";
 
 export function validaID(request, response, next) {
     const usuarioLogado = request.usuarioLogado;
