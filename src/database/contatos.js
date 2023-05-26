@@ -6,7 +6,7 @@ import { v4 as gerarId } from 'uuid';
     - Nome
     - Telefone
     - Email
-    - criadoPor
+    - criadoPor: 'maria@teste.com'
 
 */
 

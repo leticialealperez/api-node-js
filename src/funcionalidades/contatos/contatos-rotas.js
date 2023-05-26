@@ -26,15 +26,17 @@ const rotasContatos = (rotiador) => {
     });
 
     // LISTAGEM
-    rotiador.get('/contatos/listar', validaUsuarioAutenticado, (request, response) => {
-        const usuarioLogado = request.usuarioLogado;
+    rotiador.get('/users/:emailUser/contatos/listar', (request, response) => {
+        const parametro = request.params;
 
-        const recadosUsuarioLogado = contatos.filter((contato) => contato.criadoPor === usuarioLogado)
+        // console.log(parametro)
+
+        const recadosUsuarioLogado = contatos.filter((contato) => contato.criadoPor === parametro.emailUser)
 
         return response.status(201).json({
             sucesso: true,
             dados: recadosUsuarioLogado,
-            mensagem: 'Contatos do usuário listados com sucesso!',
+            mensagem: `Contatos do usuário ${parametro.emailUser} listados com sucesso!`,
         });
     });
 
