@@ -29,16 +29,40 @@ const rotasContatos = (rotiador) => {
 
     // LISTAGEM
     rotiador.get('/users/:emailUser/contatos/listar', (request, response) => {
+        // PARAMS => parametros da rota
         const parametro = request.params;
-
-        // console.log(parametro)
 
         const recadosUsuarioLogado = contatos.filter((contato) => contato.criadoPor === parametro.emailUser)
 
+        //  query params => FILTRAGEM
+        const queryParametro = request.query;
+
+        const pagina = Number(queryParametro.pagina) || 1 // testa se .pagina existe para usar o seu valor, caso contrário atribui o valor 1 à variavel
+
+        const limite = 5;
+
+        const totalPaginas = Math.ceil(recadosUsuarioLogado.length / limite) //
+
+        const indice = (pagina - 1) * limite
+
+        const aux = [...recadosUsuarioLogado] // ... spread => copia todos os registros da variavel
+
+        const resultado = aux.splice(indice, limite) // [0, 1, 2, 3, 4]
+
+
+        // 1 pagina => 0 ... 4 => total 5 => (1 - 1) * 5 => 0 indice de inicio do corte
+        // 2 pagina => 5 .... 9 => total 5 => (2 - 1) * 5 => 5 indice de inicio do corte
+        // 3 pagina => 10 ... 14 => total 5 => (3 - 1) * 5 => 10 indice de inicio do corte
+        // 4 pagina => 15 ... 19 => total 5 => (4 - 1) * 5 => 15 indice de inicio do corte
+        // 5 pagina => 20 ... 24 => total 5 => (5 - 1) * 5 => 20 indice de inicio do corte
+
         return response.status(201).json({
             sucesso: true,
-            dados: recadosUsuarioLogado,
+            paginaAtual: pagina,
+            totalRegistros: recadosUsuarioLogado.length,
+            totalPaginas: totalPaginas,
             mensagem: `Contatos do usuário ${parametro.emailUser} listados com sucesso!`,
+            dados: resultado,
         });
     });
 

@@ -21,8 +21,6 @@ const rotasUsuarios = (rotiador) => {
 
         usuarios.push(novoUsuario);
 
-        console.log(usuarios);
-
         return response.status(201).json({
             sucesso: true,
             dados: novoUsuario,

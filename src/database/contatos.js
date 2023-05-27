@@ -150,5 +150,19 @@ export const contatos = [
         telefone: '(51)99988-7766',
         email: 'joao@teste.com',
         criadoPor: 'leticia@teste.com'
-    }
+    },
+    {
+        id: gerarId(),
+        nome: 'João',
+        telefone: '(51)99988-7766',
+        email: 'joao@teste.com',
+        criadoPor: 'leticia@teste.com'
+    },
+    {
+        id: gerarId(),
+        nome: 'João',
+        telefone: '(51)99988-7766',
+        email: 'joao@teste.com',
+        criadoPor: 'leticia@teste.com'
+    },
 ]
